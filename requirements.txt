@@ -1,4 +1,5 @@
 ray[default]
 jupyter
+scikit-learn
 anyscale
 
