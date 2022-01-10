@@ -1,5 +1,7 @@
 ray[default]
 jupyter
 scikit-learn
+tune-sklearn
+xgboost-ray
 anyscale
 
