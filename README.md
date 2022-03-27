@@ -8,6 +8,7 @@ This is an introduction to basic Ray patterns for distributing computing. In thi
  * Remote Stateless Ray Tasks
  * Remote Stateful Ray Actors
  * Remote ObectRefs as Futures
+ * Brief introduction to Ray Tune and Ray Serve
 
 By no means all the Ray patterns are covered here. We recommend that you follow the references for [advanced patterns and antipatterns](https://docs.ray.io/en/latest/ray-design-patterns/index.html) if you want to use Ray to write your own ML-based libraries or want to take existing Python single-process or single-node multi-core applications and covert them into distributed multi-core, multi-node processes on a Ray cluster.
 
@@ -17,12 +18,26 @@ Knowing these Ray patterns and anti-patterns will guide you in writing effective
 
 We assume that you have a `conda` installed.
 
- 1. `source env.sh ray-core 3.8.10` 
- 3. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
- 4. `cd` to `<cloned_dir>`
- 5. `jupyter lab`
+ 1. conda create -n ray-core-tutorial python=3.8
+ 2. conda activate ray-core-tutorial
+ 3. python3 -m pip install -r requirements.txt
+ 4. python3 -m ipykernel install
+p
+ 5. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
+ 6. `cd` to `<cloned_dir>`
+ 7. `jupyter lab`
  
- Enjoy Ray!
+### Prerequisite knowledge ###
+
+Some prior experience with Python and Jupyter notebooks will be helpful, but we'll explain most details as we go if you haven't used notebooks before. 
+Knowledge of basic machine learning concepts, including hyperparameters, model serving, and principles of distributed computing is helpful, but not required.
+
+All exercises will be done on your laptop, preferably running a Linux or macOS, using all its cores. Because you won’t have access to Ray clusters, we have to 
+run Ray locally and parallelize all your tasks on all your cores.
+
+(Python 3.7+ are required on your laptop, and some minimal installation of quick python packages using conda and pip.)
+
+Let's have fun with Ray!
  
- Jules
+Jules
 

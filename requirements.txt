@@ -1,7 +1,7 @@
-ray[default]
+ray[default, tune, serve]
 jupyter
 scikit-learn
 tune-sklearn
 xgboost-ray
+vaderSentiment
 anyscale
-
