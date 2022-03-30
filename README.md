@@ -20,10 +20,10 @@ We assume that you have a `conda` installed.
 
  1. conda create -n ray-core-tutorial python=3.8
  2. conda activate ray-core-tutorial
- 3. python3 -m pip install -r requirements.txt
- 4. python3 -m ipykernel install
- 5. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
- 6. `cd` to `<cloned_dir>`
+ 3. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
+ 4. `cd` to <cloned_dir>
+ 5. python3 -m pip install -r requirements.txt
+ 6. python3 -m ipykernel install
  7. `jupyter lab`
  
 ### Prerequisite knowledge ###
