@@ -3,5 +3,4 @@ jupyter
 scikit-learn
 tune-sklearn
 xgboost-ray
-vaderSentiment
 anyscale
