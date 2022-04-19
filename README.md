@@ -1,4 +1,6 @@
-# Introduction to Ray Ecosystem.
+# Introduction to Ray Ecosystem for Distributed Applications 
+
+Welcome to the tutorial at PyCon US 2022 in Salt Lake City
 
 <img src="images/ray-logo.png" height="50%" width="50%">
 
@@ -32,14 +34,14 @@ Python 3.7+ is required on your laptop, and some minimal installation of quick p
 
 We assume that you have a `conda` installed.
 
- 1. conda create -n ray-core-tutorial python=3.8
- 2. conda activate ray-core-tutorial
+ 1. `conda create -n ray-core-tutorial python=3.8`
+ 2. `conda activate ray-core-tutorial`
  3. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
  4. `cd` to <cloned_dir>
- 5. python3 -m pip install -r requirements.txt
- 6. python3 -m ipykernel install
+ 5. `python3 -m pip install -r requirements.txt`
+ 6. `python3 -m ipykernel install`
  7. `jupyter lab`
  
-Let's have fun with Ray!
+Let's have fun with Ray @ PyCon US 2022!
  
 Jules
