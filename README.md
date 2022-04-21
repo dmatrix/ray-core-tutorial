@@ -1,11 +1,13 @@
 # Introduction to Ray Ecosystem for Distributed Applications 
 
+<img src="images/PyCon2022_Logo.png" height="50%" width="80%">
+
 Welcome to the tutorial at PyCon US 2022 in Salt Lake City
 
 <img src="images/ray-logo.png" height="50%" width="50%">
 
 
-This is a gentle introduction to basic Ray patterns for distributing computing. In this tutorial, we will cover at least three basic Ray patterns and its respective Ray Core APIs. 
+This is a gentle introduction to basic Ray programming patterns and APIs for distributing computing. In this tutorial, we will cover at least three basic Ray patterns and its respective Ray Core APIs. 
 
  * Remote Stateless Ray Tasks
  * Remote Stateful Ray Actors
