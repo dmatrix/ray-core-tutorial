@@ -1,5 +1,6 @@
 ray[default, tune, serve]
 jupyter
+jupyterlab
 scikit-learn
 tune-sklearn
 xgboost-ray
