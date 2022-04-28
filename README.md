@@ -44,6 +44,16 @@ We assume that you have a `conda` installed.
  6. `python3 -m ipykernel install`
  7. `jupyter lab`
  
+ If you are using **Apple M1 laptop** follow the following instructions:
+ 
+ 1. `conda create -n ray-core-tutorial-testing python=3.8`
+ 2. `conda activate ray-core-tutorial-testing`
+ 3. `conda install grpcio`
+ 4. `python3 -m pip install -r requirements.txt`
+ 5. `python3 -m ipykernel install`
+ 6. `conda install jupyterlab`
+ 7. `jupyter lab`
+ 
 Let's have fun with Ray @ PyCon US 2022!
  
 Jules
