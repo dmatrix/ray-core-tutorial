@@ -28,7 +28,7 @@ to Ray Serve for deploying and serving models.
 Some prior experience with Python and Jupyter notebooks will be helpful, but we'll explain most details as we go if you haven't used notebooks before. Knowledge of basic machine learning concepts, including hyperparameters, model serving, and principles of distributed computing is helpful, 
 but not required.
 
-All exercises can be done on your laptop, preferably running a Linux or macOS, using all its cores. Because you won’t have access to Ray clusters, we have to run Ray locally and parallelize all your tasks on all your cores.
+All exercises can be done on your laptop 💻, preferably running a Linux or macOS 🍎, using all its cores. Because you won’t have access to Ray clusters, we have to run Ray locally and parallelize all your tasks on all your cores.
 
 Python 3.7+ is required on your laptop, and some minimal installation of quick python packages using conda and pip.
 
