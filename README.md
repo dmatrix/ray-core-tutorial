@@ -20,10 +20,10 @@ By no means all the Ray patterns and APIs are covered here. We recommend that yo
 
 Knowing these Ray patterns and anti-patterns will guide you in writing effective and robust distributed applications using the Ray framework and its recommended usage of Ray APIs.
 
-Additoinaly, we'll briefly examine how to use Tune APIs to train and tune your model, followed by an introduction
+Additoinaly, we'll briefly examine how to use Tune APIs to train 🚆 and tune 🎸 your model 🤖, followed by an introduction
 to Ray Serve for deploying and serving models.
 
-### Prerequisite knowledge ###
+### 🧑‍🎓Prerequisite knowledge ###
 
 Some prior experience with Python and Jupyter notebooks will be helpful, but we'll explain most details as we go if you haven't used notebooks before. Knowledge of basic machine learning concepts, including hyperparameters, model serving, and principles of distributed computing is helpful, 
 but not required.
@@ -32,7 +32,7 @@ All exercises can be done on your laptop, preferably running a Linux or macOS, u
 
 Python 3.7+ is required on your laptop, and some minimal installation of quick python packages using conda and pip.
 
-### Instructions to get started
+### 👩‍🏫 Instructions to get started
 
 We assume that you have a `conda` installed.
 
@@ -44,7 +44,7 @@ We assume that you have a `conda` installed.
  6. `python3 -m ipykernel install`
  7. `jupyter lab`
  
- If you are using **Apple M1 laptop** follow the following instructions:
+If you are using **Apple M1 laptop** 🍎 follow the following instructions:
  
  1. `conda create -n ray-core-tutorial-testing python=3.8`
  2. `conda activate ray-core-tutorial-testing`
@@ -54,6 +54,8 @@ We assume that you have a `conda` installed.
  6. `conda install jupyterlab`
  7. `jupyter lab`
  
-Let's have fun with Ray @ PyCon US 2022!
+Let's have 😜 fun with Ray @ PyCon US 2022!
+
+Thank you 🙏,
  
 Jules
