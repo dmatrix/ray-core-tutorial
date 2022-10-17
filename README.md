@@ -1,61 +1,99 @@
-# Introduction to Ray Ecosystem for Distributed Applications 
+# Introduction to Ray for Distributed Applications 
 
-<img src="images/PyCon2022_Logo.png" height="50%" width="80%">
+© 2019-2022, Anyscale. All Rights Reserved
 
-Welcome to the tutorial at PyCon US 2022 in Salt Lake City
+<img src ="images/ray-logo.png" width="70%" height="35%">
 
-<img src="images/ray-logo.png" height="50%" width="50%">
+An introduction to [Ray](https://www.ray.io/), the system for scaling your Python and machine learning workloads from a laptop to a cluster. 
+We'll start with a hands-on exploration of the core Ray API for distributed workloads, covering basic distributed Ray Core API patterns, and 
+then move on to a quick introduction to Ray's native libraries:
 
+ * Remote functions as tasks
+ * Remote objects as futures
+ * Remote classes as stateful actors
+ * Quick introduction to Ray's data
 
-This is a gentle introduction to basic Ray programming patterns and APIs for distributing computing. In this tutorial, we will cover at least three basic Ray patterns and its respective Ray Core APIs. 
+### Outline for this Tutorial Lesson 📖
 
- * Remote Stateless Ray Tasks
- * Remote Stateful Ray Actors
- * Remote ObectRefs as Futures
+Divided into three modules, each module will take about an hour, combined with lecture and followed by 
+hands-on 👩‍💻 exercises in class.
+
+### Module 1 
+ * Lecture 20 mins
+   * What is Ray and Why & Origins
+   * Ray Component & Architecture
+   * Ray Core API Decorators & Patterns
+ * Notebooks & Exercises 
+    * Ray Functions as distribtued stateless tasks
+    * Ray Objects as Distributed future objects 
+    * Ray Actors as distributed stateful services
+   
+### Module 2
+   * Ray Actors Revisited: Understand a common pattern used in Ray native libraries 
+   * Tour of the Ray APIs: a quick look at common APIs and some tricks & tips if new to Ray
+   * Distributed multiprocessing.Pool: different strategies to scale Python with Ray
+   * Notebooks & Exercises 
+
+### Module 3
+   * Brief Introduction to Ray Data: A gentle introduction to Ray Datasets
+   
+### Extra
+   * Additional and supplemental material to peruse at leisure time.
+
+### In this course, you will learn :
+  * 👩‍💻Understand what the Ray ecosystem is and why to use it
+  * 📖Learn about Ray Core basic APIs and Python APIs
+  * 🧑‍💻Use Ray APIs to convert Python functions and classes into distributed stateless and stateful tasks
+  * 🎛 Use Dashboard for inspection
+  * 🧑‍💻Learn about the purpose of Ray native libraries and how to use them
+
+### 🎓Prerequisite knowledge ###
+**Level**: Beginners or new to Ray
+
+ * Familiarity with Python 3.7+ and basic programming concepts: lists, comprehensions, decorators, functions, dictionaries, classes, loops, 
+exceptional handling, etc
+ * Laptop with at least 8-16GB Memory with latest Chrome browser
+ * Prior knowledge of Jupyter notebooks helpful
+ * Basic knowledge of machine learning concepts
  
-Additionally, a brief introductino to two of the Ray native libraries:
- * Introduction to Ray Tune and Ray Serve
-
-By no means all the Ray patterns and APIs are covered here. We recommend that you follow the references for [advanced patterns and antipatterns](https://docs.ray.io/en/latest/ray-design-patterns/index.html) if you want to use Ray to write your own ML-based libraries or want to take existing Python single-process or single-node multi-core applications and covert them into distributed multi-core, multi-node processes on a Ray cluster.
-
-Knowing these Ray patterns and anti-patterns will guide you in writing effective and robust distributed applications using the Ray framework and its recommended usage of Ray APIs.
-
-Additoinaly, we'll briefly examine how to use Tune APIs to train 🚆 and tune 🎸 your model 🤖, followed by an introduction
-to Ray Serve for deploying and serving models.
-
-### 🧑‍🎓Prerequisite knowledge ###
-
-Some prior experience with Python and Jupyter notebooks will be helpful, but we'll explain most details as we go if you haven't used notebooks before. Knowledge of basic machine learning concepts, including hyperparameters, model serving, and principles of distributed computing is helpful, 
-but not required.
-
-All exercises can be done on your laptop 💻, preferably running a Linux or macOS 🍎, using all its cores. Because you won’t have access to Ray clusters, we have to run Ray locally and parallelize all your tasks on all your cores.
-
-Python 3.7+ is required on your laptop, and some minimal installation of quick python packages using conda and pip.
-
-### 👩‍🏫 Instructions to get started
-
-We assume that you have a `conda` installed.
-
- 1. `conda create -n ray-core-tutorial python=3.8`
- 2. `conda activate ray-core-tutorial`
- 3. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
- 4. `cd` to <cloned_dir>
- 5. `python3 -m pip install -r requirements.txt`
- 6. `python3 -m ipykernel install`
- 7. `jupyter lab`
  
-If you are using **Apple M1 laptop** 🍎 follow the following instructions:
- 
- 1. `conda create -n ray-core-tutorial-testing python=3.8`
- 2. `conda activate ray-core-tutorial-testing`
- 3. `conda install grpcio`
- 4. `python3 -m pip install -r requirements.txt`
- 5. `python3 -m ipykernel install`
- 6. `conda install jupyterlab`
- 7. `jupyter lab`
- 
-Let's have 😜 fun with Ray @ PyCon US 2022!
+## 👩 Setup instructions for local laptop 💻
+This is *optional* if you want to install training material on your laptop at home,
+after training is over.
 
-Thank you 🙏,
+### Using conda
+If you need to install Anaconda, follow the instructions [here](https://www.anaconda.com/products/distribution).
+If you already have Anaconda installed, consider running conda `upgrade --all.`
+
+1. `conda create -n ray-core-tutorial python=3.8`
+2. `conda activate ray-core-tutorial`
+3. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
+4. `cd to <cloned_dir>`
+5. `python3 -m pip install -r requirements.txt`
+6. `python3 -m ipykernel install`
+7. `jupyter lab`
+
+If you are using Apple M1 laptop 🍎 follow the following instructions:
+
+1. `conda create -n ray-core-tutorial python=3.8`
+2. `conda activate ray-core-tutorial`
+3. `conda install grpcio`
+4. `git clone git clone git@github.com:dmatrix/ray-core-tutorial.git`
+5. `cd to <cloned_dir>`
+6. `python3 -m pip install -r requirements.txt`
+7. `python3 -m ipykernel install`
+8. `conda install jupyterlab`
+9. `jupyter lab`
+
+### Using only pip
+1. `git clone git@github.com:anyscale/ray-summit-2022-training.git`
+2. `cd to <cloned_dir>`
+3. `python3 -m pip install -r requirements.txt`
+4. `python3 -m ipykernel install`
+5. `jupyter lab`
+
+
  
-Jules
+Let's have 😜 fun with Ray! To start with this tutorial, [go here](ex_00_tutorial_overview.ipynb).
+
+And when you are finished, help us improve training. Please fill out this [survey]()
