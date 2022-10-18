@@ -58,8 +58,8 @@ exceptional handling, etc
  
  
 ## 👩 Setup instructions for local laptop 💻
-This is *optional* if you want to install training material on your laptop at home,
-after training is over.
+If you want to follow the material in class or install training material on your laptop at home,
+follow these instructions.
 
 ### Using conda
 If you need to install Anaconda, follow the instructions [here](https://www.anaconda.com/products/distribution).
