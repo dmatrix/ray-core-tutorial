@@ -58,8 +58,7 @@ exceptional handling, etc
  
  
 ## 👩 Setup instructions for local laptop 💻
-If you want to follow the material in class or install training material on your laptop at home,
-follow these instructions.
+If you want to follow the material in class, please follow this instructions before class to setup your laptop.
 
 ### Using conda
 If you need to install Anaconda, follow the instructions [here](https://www.anaconda.com/products/distribution).
@@ -70,29 +69,24 @@ If you already have Anaconda installed, consider running conda `upgrade --all.`
 3. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
 4. `cd to <cloned_dir>`
 5. `python3 -m pip install -r requirements.txt`
-6. `python3 -m ipykernel install`
 7. `jupyter lab`
 
-If you are using Apple M1 laptop 🍎 follow the following instructions:
+### Installing on Apple M1
+If you are using [Apple M1](https://docs.ray.io/en/latest/ray-overview/installation.html#m1-mac-apple-silicon-support) laptop 🍎 follow the following instructions:
 
 1. `conda create -n ray-core-tutorial python=3.8`
 2. `conda activate ray-core-tutorial`
-3. `conda install grpcio`
+3. `conda install grpcio=1.43.0`
 4. `git clone git clone git@github.com:dmatrix/ray-core-tutorial.git`
 5. `cd to <cloned_dir>`
 6. `python3 -m pip install -r requirements.txt`
-7. `python3 -m ipykernel install`
-8. `conda install jupyterlab`
 9. `jupyter lab`
 
 ### Using only pip
 1. `git clone git@github.com:anyscale/ray-summit-2022-training.git`
 2. `cd to <cloned_dir>`
 3. `python3 -m pip install -r requirements.txt`
-4. `python3 -m ipykernel install`
 5. `jupyter lab`
-
-
  
 Let's have 😜 fun with Ray! To start with this tutorial, [go here](ex_00_tutorial_overview.ipynb).
 
