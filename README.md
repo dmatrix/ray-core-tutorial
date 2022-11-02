@@ -40,7 +40,7 @@ hands-on 👩‍💻 exercises in class.
 ### Extra
    * Additional and supplemental material to peruse at leisure time.
 
-### In this course, you will learn :
+### In this tutorial, you will learn :
   * 👩‍💻Understand what the Ray ecosystem is and why to use it
   * 📖Learn about Ray Core basic APIs and Python APIs
   * 🧑‍💻Use Ray APIs to convert Python functions and classes into distributed stateless and stateful tasks
