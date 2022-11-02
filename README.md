@@ -40,7 +40,7 @@ hands-on 👩‍💻 exercises in class.
 ### Extra
    * Additional and supplemental material to peruse at leisure time.
 
-### In this course, you will learn :
+### In this tutorial, you will learn :
   * 👩‍💻Understand what the Ray ecosystem is and why to use it
   * 📖Learn about Ray Core basic APIs and Python APIs
   * 🧑‍💻Use Ray APIs to convert Python functions and classes into distributed stateless and stateful tasks
@@ -56,7 +56,6 @@ exceptional handling, etc
  * Prior knowledge of Jupyter notebooks helpful
  * Basic knowledge of machine learning concepts
  
- 
 ## 👩 Setup instructions for local laptop 💻
 If you want to follow the material in class, please follow this instructions before class to setup your laptop.
 
@@ -71,7 +70,7 @@ If you already have Anaconda installed, consider running conda `upgrade --all.`
 5. `python3 -m pip install -r requirements.txt`
 7. `jupyter lab`
 
-### Installing on Apple M1
+### Installing on Apple 🍎 M1
 If you are using [Apple M1](https://docs.ray.io/en/latest/ray-overview/installation.html#m1-mac-apple-silicon-support) laptop 🍎 follow the following instructions:
 
 1. `conda create -n ray-core-tutorial python=3.8`
