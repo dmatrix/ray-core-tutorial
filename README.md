@@ -90,4 +90,4 @@ If you are using [Apple M1](https://docs.ray.io/en/latest/ray-overview/installat
  
 Let's have 😜 fun with Ray! To start with this tutorial, [go here](ex_00_tutorial_overview.ipynb).
 
-And when you are finished, help us improve training. Please fill out this [survey]()
+And when you are finished, help us improve training. Please fill out this [survey](https://bit.ly/pydata-nyc-2022)
