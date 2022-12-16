@@ -206,6 +206,4 @@ def transform_image(img_name:str, verbose=False):
     if verbose:
         print(f"{os.path.basename(img_name)} augmented: shape:{img.size}| image tensor shape:{tensor.size()} transpose shape:{t_tensor.size()}")
 
-    return before_shape, after_shape                                                             
-                                                                   
-
+    return before_shape, after_shape
