@@ -7,3 +7,5 @@ tune-sklearn
 xgboost
 xgboost-ray
 tqdm
+torch
+torchvision
