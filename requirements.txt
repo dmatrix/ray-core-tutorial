@@ -9,3 +9,4 @@ xgboost-ray
 tqdm
 torch
 torchvision
+scipy
