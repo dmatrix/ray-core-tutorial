@@ -1,5 +1,5 @@
 import time
-from typing import Tuple
+from typing import Tuple, Dict, Any
 from sklearn.datasets import fetch_california_housing
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
@@ -11,42 +11,67 @@ import ray
 # states to inspect 
 STATES = ["INITIALIZED", "RUNNING", "DONE"]
 
-RANDOM_FOREST_CONFIGS = {"n_estimators": 150,
-                         "name": "random_forest",
-                         "type": "lr"}
 DECISION_TREE_CONFIGS = {"max_depth": 15,
-                         "name": "decision_tree",
-                         "type": "lr"}
-XGBOOST_CONFIGS =  {"max_depth": 10,
-                    "n_estimators": 150,
-                    "name": "xgboost",
-                    "type": "lr"}
+                         "name": "decision_tree"}
 
-@ray.remote
-class RFRActor:
+RANDOM_FOREST_CONFIGS = {"n_estimators": 150,
+                        "name": "random_forest"}
+
+XGBOOST_CONFIGS = {"max_depth": 10,
+                   "n_estimators": 150,
+                   "lr": 0.1,
+                   "eta": 0.3,
+                   "colsample_bytree": 1,
+                   "name": "xgboost"}
+
+class ActorCls:
     """
-    An actor model to train and score the calfornia house data using Random Forest Regressor
+    Base class for our Ray Actor workers models
     """
-    def __init__(self, **kwargs):
-        self.kwargs= kwargs
-        self.name = kwargs["name"]
-        self.estimators = kwargs["n_estimators"]
+    def __init__(self, configs: Dict[Any, Any]) -> None:
+        self.configs = configs
+        self.name = configs["name"]
         self.state = STATES[0]
         self.X, self.y = None, None
         self.X_train, self.X_test = None, None
         self.y_train, self.y_test = None, None
         self.model = None
 
+    def get_name(self) -> str:
+        return self.name
+
+    def get_state(self) -> str:
+        return self.state
+    
+
     def _prepare_data_and_model(self) -> None:
         self.X, self.y = fetch_california_housing(return_X_y=True, as_frame=True)
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state=42)
-        self.model = RandomForestRegressor(n_estimators=self.estimators, random_state=42)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state=4)
+
+    def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
+        """
+        Overwrite this function in super class
+        """
+        pass
+    
+    
+@ray.remote
+class RFRActor(ActorCls):
+    """
+    An actor model to train and score the calfornia house data using Random Forest Regressor
+    """
+    def __init__(self, configs):
+        super().__init__(configs)
+        self.estimators = configs["n_estimators"]
+    
 
     def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
         """
         Train the model and evaluate and report MSE
         """
+        
         self._prepare_data_and_model()
+        self.model = RandomForestRegressor(n_estimators=self.estimators, random_state=42)
 
         print(f"Start training model {self.name} with estimators: {self.estimators} ...")
 
@@ -62,34 +87,25 @@ class RFRActor:
 
         return  self.get_state(), self.estimators, round(score, 4), round(end_time - start_time, 2)
 
-    def get_state(self) -> str:
-        return self.state
 
 @ray.remote
-class DTActor:
+class DTActor(ActorCls):
     """
     An actor model to train and score the calfornia house data using Decision Tree Regressor
     """
-    def __init__(self, **kwargs):
-        self.kwargs= kwargs
-        self.name = kwargs["name"]
-        self.max_depth = kwargs["max_depth"]
-        self.state = STATES[0]
-        self.X, self.y = None, None
-        self.X_train, self.X_test = None, None
-        self.y_train, self.y_test = None, None
-        self.model = None
-
-    def _prepare_data_and_model(self) -> None:
-        self.X, self.y = fetch_california_housing(return_X_y=True, as_frame=True)
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state=42)
-        self.model = DecisionTreeRegressor(max_depth=self.max_depth, random_state=42)
+    def __init__(self, configs):
+        
+        super().__init__(configs)
+        self.max_depth = configs["max_depth"]
 
     def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
         """
         Train the model and evaluate and report MSE
         """
+        
         self._prepare_data_and_model()
+        self.model = DecisionTreeRegressor(max_depth=self.max_depth, random_state=42)
+        
         print(f"Start training model {self.name} with max depth: { self.max_depth } ...")
 
         start_time = time.time()
@@ -104,41 +120,34 @@ class DTActor:
 
         return  self.get_state(), self.max_depth, round(score, 4), round(end_time - start_time, 2)
 
-    def get_state(self) -> str:
-        return self.state
-
 @ray.remote
-class XGBoostActor:
+class XGBoostActor(ActorCls):
     """
     An actor model to train and score the calfornia house data using XGBoost Regressor
     """
-    def __init__(self, **kwargs):
-        self.kwargs= kwargs
-        self.name = kwargs["name"]
-        self.max_depth = kwargs["max_depth"]
-        self.estimators = kwargs["n_estimators"]
-        self.state = STATES[0]
-        self.X, self.y = None, None
-        self.X_train, self.X_test = None, None
-        self.y_train, self.y_test = None, None
-        self.model = None
+    def __init__(self, configs):
+        
+        super().__init__(configs)
+        self.max_depth = configs["max_depth"]
+        self.estimators = configs["n_estimators"]
+        self.colsample = configs["colsample_bytree"]
+        self.eta = configs["eta"]
+        self.lr = configs["lr"]
 
-    def _prepare_data_and_model(self) -> None:
-        self.X, self.y = fetch_california_housing(return_X_y=True, as_frame=True)
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state=42)
-        self.model = xgb.XGBRegressor(objective='reg:squarederror',
-                                      colsample_bytree=1,
-                                      eta=0.3,
-                                      learning_rate = 0.1,
-                                      max_depth=self.max_depth,
-                                      n_estimators=self.estimators,
-                                      random_state=42)
-    
     def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
         """
         Train the model and evaluate and report MSE
         """
+        
         self._prepare_data_and_model()
+        self.model = xgb.XGBRegressor(objective='reg:squarederror',
+                                      colsample_bytree=self.colsample,
+                                      eta=self.eta,
+                                      learning_rate = self.lr,
+                                      max_depth=self.max_depth,
+                                      n_estimators=self.estimators,
+                                      random_state=42)
+        
         print(f"Start training model {self.name} with estimators: {self.estimators} and max depth: { self.max_depth } ...")
         start_time = time.time()
         self.model.fit(self.X_train, self.y_train)
@@ -151,6 +160,3 @@ class XGBoostActor:
         print(f"End training model {self.name} with estimators: {self.estimators} and max depth: { self.max_depth } and took: {end_time - start_time:.2f})")
 
         return  self.get_state(), self.max_depth, round(score, 4), round(end_time - start_time, 2)
-
-    def get_state(self) -> str:
-        return self.state
