@@ -166,7 +166,7 @@ class XGBoostActor(ActorCls):
         self.state = STATES[2]
 
         end_time = time.time()
-        print(f"End training model {self.name} with estimators: {self.estimators} and max depth: { self.max_depth } and took: {end_time - start_time:.2f})")
+        print(f"End training model {self.name} with estimators: {self.estimators} and max depth: { self.max_depth } and took: {end_time - start_time:.2f}")
 
         return {"state": self.get_state(), 
                 "name": self.get_name(),
