@@ -48,7 +48,7 @@ class ActorCls:
         self.X, self.y = fetch_california_housing(return_X_y=True, as_frame=True)
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state=4)
 
-    def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
+    def train_and_evaluate_model(self) -> Dict[Any, Any]:
         """
         Overwrite this function in super class
         """
@@ -65,7 +65,7 @@ class RFRActor(ActorCls):
         self.estimators = configs["n_estimators"]
     
 
-    def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
+    def train_and_evaluate_model(self) -> Dict[Any, Any]:
         """
         Train the model and evaluate and report MSE
         """
@@ -85,7 +85,11 @@ class RFRActor(ActorCls):
         end_time = time.time()
         print(f"End training model {self.name} with estimators: {self.estimators} took: {end_time - start_time:.2f} seconds")
 
-        return  self.get_state(), self.estimators, round(score, 4), round(end_time - start_time, 2)
+        return  { "state": self.get_state(),
+                  "name": self.get_name(),
+                  "estimators": self.estimators, 
+                  "mse": round(score, 4), 
+                  "time": round(end_time - start_time, 2)}
 
 
 @ray.remote
@@ -98,7 +102,7 @@ class DTActor(ActorCls):
         super().__init__(configs)
         self.max_depth = configs["max_depth"]
 
-    def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
+    def train_and_evaluate_model(self) -> Dict[Any, Any]:
         """
         Train the model and evaluate and report MSE
         """
@@ -118,7 +122,11 @@ class DTActor(ActorCls):
         end_time = time.time()
         print(f"End training model {self.name} with max_depth tree: {self.max_depth} took: {end_time - start_time:.2f} seconds")
 
-        return  self.get_state(), self.max_depth, round(score, 4), round(end_time - start_time, 2)
+        return { "state": self.get_state(), 
+                 "name": self.get_name(),
+                 "max_depth": self.max_depth, 
+                 "mse": round(score, 4), 
+                 "time": round(end_time - start_time, 2)}
 
 @ray.remote
 class XGBoostActor(ActorCls):
@@ -128,13 +136,14 @@ class XGBoostActor(ActorCls):
     def __init__(self, configs):
         
         super().__init__(configs)
+        
         self.max_depth = configs["max_depth"]
         self.estimators = configs["n_estimators"]
         self.colsample = configs["colsample_bytree"]
         self.eta = configs["eta"]
         self.lr = configs["lr"]
 
-    def train_and_evaluate_model(self) -> Tuple[int, str, float,float]:
+    def train_and_evaluate_model(self) -> Dict[Any, Any]:
         """
         Train the model and evaluate and report MSE
         """
@@ -159,4 +168,9 @@ class XGBoostActor(ActorCls):
         end_time = time.time()
         print(f"End training model {self.name} with estimators: {self.estimators} and max depth: { self.max_depth } and took: {end_time - start_time:.2f})")
 
-        return  self.get_state(), self.max_depth, round(score, 4), round(end_time - start_time, 2)
+        return {"state": self.get_state(), 
+                "name": self.get_name(),
+                "max_depth": self.max_depth, 
+                "mse": round(score, 4), 
+                "estimators": self.estimators,
+                "time": round(end_time - start_time, 2)}
