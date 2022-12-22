@@ -5,8 +5,8 @@
 <img src ="images/ray-logo.png" width="70%" height="35%">
 
 An introduction to [Ray](https://www.ray.io/), the system for scaling your Python and machine learning workloads from a laptop to a cluster. 
-We'll start with a hands-on exploration of the core Ray API for distributed workloads, covering basic distributed Ray Core API patterns, and 
-then move on to a quick introduction to Ray's native libraries:
+We'll start with a hands-on exploration of the core Ray APIs for distributed workloads, covering basic distributed Ray Core API patterns, and 
+then move on to a quick introduction to one of Ray's native libraries:
 
  * Remote functions as tasks
  * Remote objects as futures
@@ -15,8 +15,7 @@ then move on to a quick introduction to Ray's native libraries:
 
 ### Outline for this Tutorial Lesson 📖
 
-Divided into three modules, each module will take about an hour, combined with lecture and followed by 
-hands-on 👩‍💻 exercises in class.
+Divided into three modules, each module will take about an hour, combined with lecture and followed by hands-on 👩‍💻 exercises in class.
 
 ### Module 1 
  * Lecture 20 mins
@@ -37,23 +36,22 @@ hands-on 👩‍💻 exercises in class.
 ### Module 3
    * Brief Introduction to Ray Data: A gentle introduction to Ray Datasets
    
-### Extra
+### Extra Modules
    * Additional and supplemental material to peruse at leisure time.
 
-### In this tutorial, you will learn :
+### In this tutorial, you will:
   * 👩‍💻Understand what the Ray ecosystem is and why to use it
-  * 📖Learn about Ray Core basic APIs and Python APIs
+  * 📖Learn Ray's Core basic APIs and Python APIs
   * 🧑‍💻Use Ray APIs to convert Python functions and classes into distributed stateless and stateful tasks
-  * 🎛 Use Dashboard for inspection
-  * 🧑‍💻Learn about the purpose of Ray native libraries and how to use them
+  * 🎛 Use Dashboard for inspection and observation
+  * 🧑‍💻Discover the purpose of Ray native libraries and how to use them
 
 ### 🎓Prerequisite knowledge ###
 **Level**: Beginners or new to Ray
 
- * Familiarity with Python 3.7+ and basic programming concepts: lists, comprehensions, decorators, functions, dictionaries, classes, loops, 
-exceptional handling, etc
+ * Familiarity with Python 3.7+ and basic programming concepts: lists, comprehensions, decorators, functions, dictionaries, classes, loops, exceptional handling, etc
  * Laptop with at least 8-16GB Memory with latest Chrome browser
- * Prior knowledge of Jupyter notebooks helpful
+ * Prior knowledge of Jupyter notebooks 
  * Basic knowledge of machine learning concepts
  
  
@@ -88,6 +86,8 @@ If you are using [Apple M1](https://docs.ray.io/en/latest/ray-overview/installat
 3. `python3 -m pip install -r requirements.txt`
 5. `jupyter lab`
  
-Let's have 😜 fun with Ray! To start with this tutorial, [go here](ex_00_tutorial_overview.ipynb).
+Let's have 😜 fun with Ray! 
+
+To start tutorials, [go here](ex_00_tutorial_overview.ipynb).
 
 And when you are finished, help us improve training. Please fill out this [survey](https://bit.ly/pydata-nyc-2022)
