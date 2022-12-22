@@ -10,3 +10,4 @@ tqdm
 torch
 torchvision
 scipy
+torchinfo
