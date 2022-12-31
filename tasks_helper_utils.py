@@ -10,7 +10,8 @@ import torch
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt 
-from torchvision import transforms as T 
+from torchvision import transforms as T
+
 
 #
 # borrowed URLs ideas and heavily modified from https://analyticsindiamag.com/how-to-run-python-code-concurrently-using-multithreading/
@@ -180,7 +181,7 @@ def transform_image(img_name:str, verbose=False):
     img = Image.open(img_name)
     before_shape = img.size
 
-    # Make the image blur with specified intensigy
+    # Make the image blur with specified intensify
     # Use torchvision transformation to augment the image
     img = img.filter(ImageFilter.GaussianBlur(radius=20))
     augmentor = T.TrivialAugmentWide(num_magnitude_bins=31)
@@ -207,3 +208,4 @@ def transform_image(img_name:str, verbose=False):
         print(f"{os.path.basename(img_name)} augmented: shape:{img.size}| image tensor shape:{tensor.size()} transpose shape:{t_tensor.size()}")
 
     return before_shape, after_shape
+
