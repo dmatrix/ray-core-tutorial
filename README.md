@@ -11,7 +11,7 @@ then move on to a quick introduction to one of Ray's native libraries:
  * Remote functions as tasks
  * Remote objects as futures
  * Remote classes as stateful actors
- * Quick introduction to Ray's data
+ * Quick introduction to Ray's data and Ray AIR
 
 ### Outline for this Tutorial Lesson 📖
 
@@ -35,6 +35,7 @@ Divided into three modules, each module will take about an hour, combined with l
 
 ### Module 3
    * Brief Introduction to Ray Data: A gentle introduction to Ray Datasets
+   * Brief Introduction to Ray AIR:  A gentle introduction to Ray AIR
    
 ### Extra Modules
    * Additional and supplemental material to peruse at leisure time.
