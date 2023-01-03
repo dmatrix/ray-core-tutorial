@@ -4,6 +4,7 @@ from typing import Dict, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import tqdm
 
 import torch
 import torch.nn as nn
@@ -142,9 +143,15 @@ def train_loop_per_worker(config):
     train_dataset_shard = session.get_dataset_shard("train")
 
     # Iterate over epochs
-    epochs = config.get("epochs", 40)
-    batch_size = config.get("batch_size", 512)
-    for epoch in range(epochs):
+    epochs = config.get("epochs", 10)
+    batch_size = config.get("batch_size", 32)
+    verbose = config.get("verbose", 0)
+    lr = config.get("lr", 0.01)
+    
+        
+    for epoch in tqdm.tqdm(range(epochs)):
+        if verbose:
+            print(f"Training epoch:{epoch+1}/{epochs} | batch_size:{batch_size} | lr:{lr}")
         
         train_loss = 0.0
         train_loss = 0.0
