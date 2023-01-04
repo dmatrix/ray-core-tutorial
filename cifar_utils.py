@@ -181,6 +181,8 @@ def train_loop_per_worker(config):
 
         train_loss /= total_images
         metrics = dict(train_loss=train_loss)
+        if verbose:
+            print(f"training loss: {train_loss:.3f} | epoch: {epoch+1}/{epochs} | batch: {i+1}")
         
         # Create a Torch checkpoint from the models state dictionary after each
         # epoch and report the metrics 
