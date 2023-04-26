@@ -75,7 +75,7 @@ If you are using [Apple M1](https://docs.ray.io/en/latest/ray-overview/installat
 
 1. `conda create -n ray-core-tutorial python=3.8`
 2. `conda activate ray-core-tutorial`
-3. `conda install grpcio=1.43.0`
+3. `conda install grpcio=1.43.0 -c conda-forge`
 4. `git clone git clone git@github.com:dmatrix/ray-core-tutorial.git`
 5. `cd to <cloned_dir>`
 6. `python3 -m pip install -r requirements.txt`
