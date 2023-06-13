@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt 
 from torchvision import transforms as T
+import ray
 
 
 #
@@ -163,7 +164,7 @@ def display_random_images(image_list: List[str], n: int=3) -> None:
         plt.title(title)
     plt.show() 
 
-def download_images(url: str, data_dir: str) ->None:
+def download_images(url: str, data_dir: str) -> None:
     """
     Given a URL and the image data directory, fetch the URL and save it in the data directory
     """
@@ -172,13 +173,29 @@ def download_images(url: str, data_dir: str) ->None:
     img_name = f"{data_dir}/{img_name}.jpg"
     with open(img_name, 'wb+') as f:
         f.write(img_data) 
+        
+def insert_into_object_store(img_name:str):
+    """
+    Insert the image into the object store and return its object reference
+    """
+    import ray
+    
+    img = Image.open(img_name)
+    img_ref = ray.put(img)
+    return img_ref
                                                                    
-def transform_image(img_name:str, verbose=False):
+def transform_image(img_ref:object, fetch_image=True, verbose=False):
     """
     This is a deliberate compute intensive image transfromation and tensor operation
     to simulate a compute intensive image processing
     """
-    img = Image.open(img_name)
+    import ray
+    
+    # Only fetch the image from the object store if called serially.
+    if fetch_image:
+        img = ray.get(img_ref)
+    else:
+        img = img_ref
     before_shape = img.size
 
     # Make the image blur with specified intensify
@@ -205,7 +222,7 @@ def transform_image(img_name:str, verbose=False):
     img.thumbnail(THUMB_SIZE)
     after_shape = img.size
     if verbose:
-        print(f"{os.path.basename(img_name)} augmented: shape:{img.size}| image tensor shape:{tensor.size()} transpose shape:{t_tensor.size()}")
+        print(f"augmented: shape:{img.size}| image tensor shape:{tensor.size()} transpose shape:{t_tensor.size()}")
 
     return before_shape, after_shape
 
