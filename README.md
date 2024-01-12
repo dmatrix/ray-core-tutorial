@@ -1,17 +1,16 @@
 # Introduction to Ray for Distributed Applications 
 
-© 2019-2022, Anyscale. All Rights Reserved
+© 2019-2024, Anyscale. All Rights Reserved
 
 <img src ="images/ray-logo.png" width="70%" height="35%">
 
-An introduction to [Ray](https://www.ray.io/), the system for scaling your Python and machine learning workloads from a laptop to a cluster. 
-We'll start with a hands-on exploration of the core Ray APIs for distributed workloads, covering basic distributed Ray Core API patterns, and 
+An introduction to [Ray](https://www.ray.io/), the system for scaling your Python and machine learning workloads from a laptop to a cluster. We'll start with a hands-on exploration of the core Ray APIs for distributed workloads, covering basic distributed Ray Core API patterns, and 
 then move on to a quick introduction to one of Ray's native libraries:
 
  * Remote functions as tasks
  * Remote objects as futures
  * Remote classes as stateful actors
- * Quick introduction to Ray's data and Ray AIR
+ * Quick introduction to Ray's data and Ray libraries
 
 ### Outline for this Tutorial Lesson 📖
 
@@ -50,7 +49,7 @@ Divided into three modules, each module will take about an hour, combined with l
 ### 🎓Prerequisite knowledge ###
 **Level**: Beginners or new to Ray
 
- * Familiarity with Python 3.7+ and basic programming concepts: lists, comprehensions, decorators, functions, dictionaries, classes, loops, exceptional handling, etc
+ * Familiarity with Python 3.9+ and basic programming concepts: lists, comprehensions, decorators, functions, dictionaries, classes, loops, exceptional handling, etc
  * Laptop with at least 8-16GB Memory with latest Chrome browser
  * Prior knowledge of Jupyter notebooks 
  * Basic knowledge of machine learning concepts
@@ -63,7 +62,7 @@ If you want to follow the material in class, please follow this instructions bef
 If you need to install Anaconda, follow the instructions [here](https://www.anaconda.com/products/distribution).
 If you already have Anaconda installed, consider running conda `upgrade --all.`
 
-1. `conda create -n ray-core-tutorial python=3.8`
+1. `conda create -n ray-core-tutorial python=3.10`
 2. `conda activate ray-core-tutorial`
 3. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
 4. `cd to <cloned_dir>`
@@ -73,7 +72,7 @@ If you already have Anaconda installed, consider running conda `upgrade --all.`
 ### Installing on Apple M1
 If you are using [Apple M1](https://docs.ray.io/en/latest/ray-overview/installation.html#m1-mac-apple-silicon-support) laptop 🍎 follow the following instructions:
 
-1. `conda create -n ray-core-tutorial python=3.8`
+1. `conda create -n ray-core-tutorial python=3.10`
 2. `conda activate ray-core-tutorial`
 3. `conda install grpcio=1.43.0 -c conda-forge`
 4. `git clone git@github.com:dmatrix/ray-core-tutorial.git`
